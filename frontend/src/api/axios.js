@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: "https://online-exam-system-1-6cjc.onrender.com/api",
   timeout: 10000,
 });
 

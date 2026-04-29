@@ -1,10 +1,10 @@
 // filepath: frontend/src/routes/StudentRoute.jsx
 import { useContext } from 'react';
 import { Navigate } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext';
+import { Authcontext } from '../context/Authcontext';
 
 const StudentRoute = ({ children }) => {
-  const { user, loading } = useContext(AuthContext);
+  const { user, loading } = useContext(Authcontext);
 
   if (loading) {
     return (
@@ -18,8 +18,11 @@ const StudentRoute = ({ children }) => {
     return <Navigate to="/login" replace />;
   }
 
-  const storedUser = JSON.parse(localStorage.getItem('user') || '{}');
-  return storedUser.role === 'student' ? children : <Navigate to="/admin/dashboard" />;
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return user.role === 'student' ? children : <Navigate to="/admin/dashboard" replace />;
 };
 
 export default StudentRoute;

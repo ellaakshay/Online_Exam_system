@@ -1,10 +1,10 @@
 // filepath: frontend/src/routes/PrivateRoute.jsx
 import { useContext } from 'react';
 import { Navigate } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext';
+import { Authcontext } from '../context/Authcontext';
 
 const PrivateRoute = ({ children }) => {
-  const { user, loading } = useContext(AuthContext);
+  const { user, loading } = useContext(Authcontext);
 
   if (loading) {
     return (

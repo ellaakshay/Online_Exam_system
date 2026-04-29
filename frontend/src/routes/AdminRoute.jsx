@@ -1,10 +1,10 @@
 // filepath: frontend/src/routes/AdminRoute.jsx
 import { useContext } from 'react';
 import { Navigate } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext';
+import { Authcontext } from '../context/Authcontext';
 
 const AdminRoute = ({ children }) => {
-  const { user, loading } = useContext(AuthContext);
+  const { user, loading } = useContext(Authcontext);
 
   if (loading) {
     return (
@@ -18,8 +18,11 @@ const AdminRoute = ({ children }) => {
     return <Navigate to="/login" replace />;
   }
 
-  const storedUser = JSON.parse(localStorage.getItem('user') || '{}');
-  return storedUser.role === 'admin' ? children : <Navigate to="/student/dashboard" />;
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return user.role === 'admin' ? children : <Navigate to="/student/dashboard" replace />;
 };
 
 export default AdminRoute;

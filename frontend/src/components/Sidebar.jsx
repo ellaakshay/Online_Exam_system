@@ -1,5 +1,5 @@
 import { NavLink, useNavigate, useLocation } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext';
+import { Authcontext } from '../context/Authcontext';
 import { useContext } from 'react';
 import { 
   LayoutDashboard, 
@@ -14,7 +14,7 @@ import {
 import toast from 'react-hot-toast';
 
 const Sidebar = ({ role }) => {
-  const { logout } = useContext(AuthContext);
+  const { logout } = useContext(Authcontext);
   const navigate = useNavigate();
   const location = useLocation();
   const user = JSON.parse(localStorage.getItem('user') || '{}');

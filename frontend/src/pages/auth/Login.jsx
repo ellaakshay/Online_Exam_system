@@ -2,7 +2,7 @@ import { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Mail, Lock, Eye, EyeOff, Loader2 } from 'lucide-react';
 import toast from 'react-hot-toast';
-import { AuthContext } from '../../context/AuthContext';
+import { Authcontext } from '../../context/Authcontext';
 import { login } from '../../api/axios';
 
 const Login = () => {
@@ -11,7 +11,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [focusedField, setFocusedField] = useState(null);
   const [error, setError] = useState('');
-  const { login: authLogin } = useContext(AuthContext);
+  const { login: authLogin } = useContext(Authcontext);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
